@@ -20,7 +20,8 @@ public class UserUtils {
      * @return 用户登录信息
      */
     public static UserDetailDTO getLoginUser() {
-        return (UserDetailDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return (UserDetailDTO) principal;
     }
 
 }

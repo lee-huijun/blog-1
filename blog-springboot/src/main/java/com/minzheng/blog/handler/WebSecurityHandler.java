@@ -21,7 +21,7 @@ import static com.minzheng.blog.constant.CommonConst.APPLICATION_JSON;
 /**
  * @author hnz
  * @date 2022/3/23 11:21
- * @description
+ * @description web安全拦截器，用于拦截限制访问
  */
 @Log4j2
 public class WebSecurityHandler implements HandlerInterceptor {

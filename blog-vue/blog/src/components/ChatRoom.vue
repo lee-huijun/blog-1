@@ -202,9 +202,11 @@ export default {
       this.isEmoji = !this.isEmoji;
       this.isVoice = false;
     },
+    //建立socket连接
     connect() {
       var that = this;
       this.websocket = new WebSocket(this.blogInfo.websiteConfig.websocketUrl);
+      console.log(this.blogInfo.websiteConfig.websocketUrl);
       // 连接发生错误的回调方法
       this.websocket.onerror = function(event) {
         console.log(event);

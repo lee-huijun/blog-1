@@ -129,7 +129,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleDao, Article> impleme
 
     @Override
     public ArticleDTO getArticleById(Integer articleId) {
-        // 查询推荐文章
+        // 查询推荐文章,推荐文章就是相同tag的
         CompletableFuture<List<ArticleRecommendDTO>> recommendArticleList = CompletableFuture
                 .supplyAsync(() -> articleDao.listRecommendArticles(articleId));
         // 查询最新文章

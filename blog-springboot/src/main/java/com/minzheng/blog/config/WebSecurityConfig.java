@@ -28,6 +28,7 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    //认证点实现类
     @Autowired
     private AuthenticationEntryPointImpl authenticationEntryPoint;
     @Autowired
