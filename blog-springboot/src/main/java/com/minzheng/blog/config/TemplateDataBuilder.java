@@ -8,6 +8,7 @@ import com.minzheng.blog.util.RandomAncientPoetry;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.minzheng.blog.util.GaodeUtil.getAdcCode;
@@ -54,7 +55,7 @@ public class TemplateDataBuilder {
     public static List<WxMpTemplateData> buildData(TbReceviver friend) {
         WeatherInfo weather = GaodeUtil.getNowWeatherInfo(getAdcCode(friend.getProvince(), friend.getCity()));
         RandomAncientPoetry.AncientPoetry ancientPoetry = RandomAncientPoetry.getNext();
-        return List.of(
+        return Arrays.asList(
                 TemplateDataBuilder.builder().name("name").value(friend.getName()).color("#D91AD9").build(),
                 TemplateDataBuilder.builder().name("age").value(friend.getAge().toString()).color("#F77234").build(),
                 TemplateDataBuilder.builder().name("howLongLived").value(friend.getHowLongLived()).color("#437004").build(),
