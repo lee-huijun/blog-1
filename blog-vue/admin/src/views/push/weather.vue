@@ -217,12 +217,12 @@ export default {
             this.loading = false;
           });
       /*这里先不删除，防止上面用到了数据，好像是可以删除的*/
-      this.axios.get("/api/admin/role/resources").then(({ data }) => {
+      /*this.axios.get("/api/admin/role/resources").then(({ data }) => {
         this.resourceList = data.data;
       });
       this.axios.get("/api/admin/role/menus").then(({ data }) => {
         this.menuList = data.data;
-      });
+      });*/
     },
     deleteRoles(id) {
       var param = {};
