@@ -1,3 +1,4 @@
+/*
 package com.minzheng.blog.config;
 
 import cn.hutool.core.util.StrUtil;
@@ -12,12 +13,14 @@ import java.util.List;
 
 import static com.minzheng.blog.util.GaodeUtil.getAdcCode;
 
+*/
 /**
  * 醉后不知天在水，满船清梦压星河。
  *
  * @author lhj
  * @date 2022/09/06 23:59
- **/
+ **//*
+
 //工具类
 public class TemplateDataBuilder {
     //以下是微信模板工具方法
@@ -109,3 +112,4 @@ public class TemplateDataBuilder {
         }
     }
 }
+*/

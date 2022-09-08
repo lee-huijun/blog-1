@@ -1,3 +1,4 @@
+/*
 package com.minzheng.blog.config;
 
 import cn.hutool.core.util.StrUtil;
@@ -35,12 +36,14 @@ import static com.minzheng.blog.config.TemplateDataBuilder.buildData;
 import static com.minzheng.blog.config.TemplateDataBuilder.getProperty;
 import static com.minzheng.blog.util.GaodeUtil.getAdcCode;
 
+*/
 /**
  * 醉后不知天在水，满船清梦压星河。
  *
  * @author lhj
  * @date 2022/09/06 23:33
- **/
+ **//*
+
 @Configuration
 public class ScheduledConfig implements SchedulingConfigurer {
     @Autowired
@@ -55,11 +58,13 @@ public class ScheduledConfig implements SchedulingConfigurer {
     private Set<ScheduledFuture<?>> scheduledFutures = null;
     private Map<String, ScheduledFuture<?>> taskFutures = new ConcurrentHashMap<>();
 
-    /**
+    */
+/**
      * 这个方法在Spring初始化的时候会帮我们执行，这里也会拉取数据库内所有需要执行的任务，进行添加到定时器里。
      * 这个相当于初始化数据库中已经存在的任务
      * @param scheduledTaskRegistrar
-     */
+     *//*
+
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
         List<TriggerTask> list= new ArrayList<>();
@@ -117,11 +122,13 @@ public class ScheduledConfig implements SchedulingConfigurer {
     }
 
 
-    /**
+    */
+/**
      * 添加任务
      * @param taskId 这里使用tb_weatherpush表的id作为任务id
      * @param triggerTask 这里需要传入一个TriggerTask对象，就是直接new一个TriggerTask对象，这个trigger对象中包含了上面的任务和执行时间。
-     */
+     *//*
+
     public void addTask(String taskId, TriggerTask triggerTask) {
         //如果定时任务id已存在，则取消原定时器，从新创建新定时器，这里也是个更新定时任务的过程。
         if (taskFutures.containsKey(taskId)) {
@@ -134,9 +141,11 @@ public class ScheduledConfig implements SchedulingConfigurer {
         taskFutures.put(taskId, future);
     }
 
-    /**
+    */
+/**
      * 获取任务列表
-     */
+     *//*
+
     private Set<ScheduledFuture<?>> getScheduledFutures() {
         if (scheduledFutures == null) {
             try {
@@ -150,9 +159,11 @@ public class ScheduledConfig implements SchedulingConfigurer {
 
 
 
-    /**
+    */
+/**
      * 取消任务
-     */
+     *//*
+
     public void cancelTriggerTask(String taskId) {
         ScheduledFuture<?> future = taskFutures.get(taskId);
         if (future != null) {
@@ -168,3 +179,4 @@ public class ScheduledConfig implements SchedulingConfigurer {
 
 }
 
+*/

@@ -1,9 +1,11 @@
 package com.li.weatherpush.entity;
 
-import com.minzheng.blog.enums.StatusCodeEnum;
+import com.li.weatherpush.enums.StatusCodeEnum;
 import lombok.Data;
 
-import static com.minzheng.blog.enums.StatusCodeEnum.*;
+import static com.li.weatherpush.enums.StatusCodeEnum.FAIL;
+import static com.li.weatherpush.enums.StatusCodeEnum.SUCCESS;
+
 
 /**
  * 接口返回类

@@ -11,7 +11,6 @@ import com.li.weatherpush.service.TbReceviverService;
 import com.li.weatherpush.service.TbWeatherpushService;
 import com.li.weatherpush.service.impl.TemplateDataBuilder;
 import com.li.weatherpush.service.impl.ScheduledConfig;
-import com.li.weatherpush.util.UserUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import me.chanjar.weixin.mp.api.WxMpService;
@@ -63,11 +62,11 @@ public class TbWeatherpushController {
     //这里直接创建一个定时任务，这个任务中要包含微信公众号信息，这里就不将微信公众号信息单独拿出来了
     @ApiOperation(value = "获取当前用户的推送设置")
     @GetMapping("/admin/weatherpush")
-    public Result<List<PushDTO>> page(Integer current, Integer size) {
+    public Result<List<PushDTO>> page(Integer current, Integer size,Integer userId) {
         //这里需要组装一下
         Page<TbWeatherpush> weatherPage = new Page<>(current, size);
         LambdaQueryWrapper<TbWeatherpush> queryWrapper = new LambdaQueryWrapper<TbWeatherpush>();
-        queryWrapper.eq(TbWeatherpush::getUserId, UserUtils.getLoginUser().getUserInfoId());
+        queryWrapper.eq(TbWeatherpush::getUserId, userId);
         Page<TbWeatherpush> page = tbWeatherpushService.page(weatherPage, queryWrapper);
         List<PushDTO> result = page.getRecords().stream()
                 .map(weather -> {
@@ -89,10 +88,10 @@ public class TbWeatherpushController {
 
     @ApiOperation(value = "添加推送设置")
     @PostMapping("/admin/weatherpush")
-    public Result save(@RequestBody PushDTO pushDTO) {
+    public Result save(@RequestBody PushDTO pushDTO,Integer userId) {
         TbWeatherpush weatherpush = new TbWeatherpush();
         BeanUtils.copyProperties(pushDTO, weatherpush);
-        weatherpush.setUserId(UserUtils.getLoginUser().getUserInfoId());
+        weatherpush.setUserId(userId);
         tbWeatherpushService.saveOrUpdate(weatherpush);
 
         //添加定时任务
@@ -150,16 +149,16 @@ public class TbWeatherpushController {
 
     @ApiOperation(value = "删除推送设置")
     @DeleteMapping("/admin/weatherpush/{id}")
-    public Result delete(@PathVariable Integer id) {
+    public Result deleteWeatherpush(@PathVariable Integer id) {
         tbWeatherpushService.removeById(id);
         return Result.ok();
     }
 
     @ApiOperation(value="获取当前用户的好友")
     @GetMapping("/admin/weatherpush/friends")
-    public Result<List<TbReceviver>> getFriends(){
+    public Result<List<TbReceviver>> getFriends(Integer userId){
         LambdaQueryWrapper<TbReceviver> queryWrapper = new LambdaQueryWrapper<TbReceviver>();
-        queryWrapper.eq(TbReceviver::getUserId,UserUtils.getLoginUser().getUserInfoId());
+        queryWrapper.eq(TbReceviver::getUserId,userId);
         List<TbReceviver> list = tbReceviverService.list(queryWrapper);
         return Result.ok(list);
     }
