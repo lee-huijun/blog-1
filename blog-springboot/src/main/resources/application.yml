@@ -10,7 +10,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Shanghai&allowMultiQueries=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Shanghai&allowMultiQueries=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 123456
     hikari:
@@ -30,15 +30,15 @@ spring:
       connection-test-query: SELECT 1
   # redis配置
   redis:
-    host: lihuijun.fun
+    host: 43.139.70.203
     port: 6379
-    password: 123456
+    password: pass
   # mq配置
   rabbitmq:
-    host: lihuijun.fun
+    host: 43.139.70.203
     port: 5672
-    username: guest
-    password: guest
+    username: admin
+    password: pass
     listener:
       simple:
         retry:
@@ -84,7 +84,7 @@ upload:
   mode: local
   local:
     # nginx映射本地文件路径，无域名则为 ip:83
-    url: http://lihuijun.fun:83/
+    url: http://43.139.70.203:83/
     # 本地文件存储路径
     path: /usr/local/upload/
   oss:
@@ -96,7 +96,7 @@ upload:
 
 # 网站前台域名（邮件通知用）
 website:
-  url: http://lihuijun.fun
+  url: http://43.139.70.203
 
 #第三方配置信息
 qq:
