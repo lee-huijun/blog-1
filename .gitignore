@@ -21,3 +21,4 @@ yarn-error.log*
 *.sln
 *.sw?
 **/target/
+**/node_modules/
